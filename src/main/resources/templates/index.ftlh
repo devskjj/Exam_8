@@ -74,19 +74,6 @@
             </form>
         </div>
 
-        <div class="card-body bg-light border-bottom py-3">
-            <h3 class="h6 fw-medium text-dark mb-2">Элементов на странице:</h3>
-            <div class="d-flex flex-wrap gap-1">
-                <#assign sizes = [10, 20, 50, 100]>
-                <#list sizes as s>
-                    <a href="/?page=1&size=${s}<#if categoryId?? && categoryId != 0>&categoryId=${categoryId}</#if><#if contentTypeId?? && contentTypeId != 0>&contentTypeId=${contentTypeId}</#if><#if sortBy??>&sortBy=${sortBy}</#if><#if sortDirection??>&sortDirection=${sortDirection}</#if>"
-                       class="btn btn-sm ${(s == size)?then('btn-success', 'btn-outline-secondary')}">
-                        ${s}
-                    </a>
-                </#list>
-            </div>
-        </div>
-
         <#if files?? && files.content?? && files.content?size gt 0>
             <div class="table-responsive">
                 <table class="table table-hover mb-0">

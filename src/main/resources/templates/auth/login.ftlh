@@ -3,6 +3,13 @@
     <#assign content>
         <h2 class="h5 text-center text-dark mb-4">Вход в аккаунт</h2>
 
+        <#if error??>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Ошибка!</strong> ${error}
+                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            </div>
+        </#if>
+
         <form action="/auth/login" method="post">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -14,13 +21,16 @@
                     <span class="input-group-text bg-light border-end-0">
                         <i class="fas fa-envelope text-muted"></i>
                     </span>
-                    <input type="email"
-                           id="email"
-                           name="username"
-                           placeholder="example@mail.ru"
-                           class="form-control border-start-0"
-                           required>
+                    <input
+                            id="email"
+                            name="username"
+                            placeholder="example@mail.ru"
+                            class="form-control border-start-0"
+                    >
                 </div>
+                <#if error??>
+                    <p class="text-danger small mt-1">Введите email</p>
+                </#if>
             </div>
 
             <div class="mb-4">
@@ -35,17 +45,12 @@
                            id="password"
                            name="password"
                            placeholder="Введите пароль"
-                           class="form-control border-start-0"
-                           required>
+                           class="form-control border-start-0">
                 </div>
+                <#if error??>
+                    <p class="text-danger small mt-1">Введите пароль</p>
+                </#if>
             </div>
-
-            <#if error??>
-                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                    <strong>Ошибка!</strong> ${error}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                </div>
-            </#if>
 
             <button type="submit" class="btn btn-success w-100 py-2 fw-semibold">
                 <i class="fas fa-sign-in-alt me-2"></i>
