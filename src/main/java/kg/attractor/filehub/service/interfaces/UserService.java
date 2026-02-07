@@ -6,7 +6,6 @@ import kg.attractor.filehub.dto.UserDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.web.context.SecurityContextRepository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -34,9 +33,7 @@ public interface UserService {
 
     boolean isUserBlocked(Long userId);
 
-    @Transactional
     void blockUser(Long userId);
 
-    @Transactional
     void unblockUser(Long userId);
 }
