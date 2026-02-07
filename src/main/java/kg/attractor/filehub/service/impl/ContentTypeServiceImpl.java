@@ -9,7 +9,6 @@ import kg.attractor.filehub.service.interfaces.ContentTypeService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -40,7 +39,6 @@ public class ContentTypeServiceImpl implements ContentTypeService {
     }
 
     @Override
-    @Transactional
     public ContentTypeDto getOrCreateContentType(String mimeType) {
         try {
             return getContentTypeByMimeType(mimeType);
@@ -70,7 +68,6 @@ public class ContentTypeServiceImpl implements ContentTypeService {
     }
 
     @Override
-    @Transactional
     public ContentTypeDto createContentType(String mimeType, String name, String extension, String description) {
         ContentType contentType = ContentType.builder()
                 .mimeType(mimeType)
